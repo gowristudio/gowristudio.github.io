@@ -23,30 +23,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
     background: radial-gradient(circle at 50% -20%, #1a103d 0%, #09090f 60%);
     color: var(--text);
-    overflow-x: hidden;
-}
-
-/* PARTICLES */
-.particles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.particles span {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: rgba(167,139,250,0.2);
-    border-radius: 50%;
-    animation: float 20s linear infinite;
-}
-
-@keyframes float {
-    from { transform: translateY(100vh) scale(0.5); }
-    to { transform: translateY(-10vh) scale(1); }
 }
 
 /* HERO */
@@ -73,7 +49,6 @@ body {
 
 .hero h1 {
     font-size: 44px;
-    font-weight: 600;
 }
 
 .hero p {
@@ -84,7 +59,7 @@ body {
 
 /* CONTAINER */
 .container {
-    max-width: 960px;
+    max-width: 900px;
     margin: auto;
     padding: 0 20px 80px;
 }
@@ -98,38 +73,47 @@ body {
     margin-bottom: 24px;
 }
 
-/* APP CARD */
-.app-card {
-    display: block; /* makes whole card clickable */
+/* CARD */
+.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
     padding: 28px;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
+    transition: 0.3s ease;
 }
 
-.app-card:hover {
+.card:hover {
     transform: translateY(-6px);
     border-color: rgba(167,139,250,0.5);
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
 /* TEXT */
-.app-title {
-    font-size: 20px;
+.title {
+    font-size: 22px;
 }
 
-.app-desc {
+.desc {
+    margin-top: 8px;
+    color: var(--muted);
+}
+
+/* BENEFITS */
+.benefits {
+    margin-top: 18px;
+}
+
+.benefits p {
     margin-top: 8px;
     color: var(--muted);
 }
 
 /* TAGS */
 .tags {
-    margin-top: 14px;
+    margin-top: 16px;
 }
 
 .tag {
@@ -154,20 +138,10 @@ body {
 
 <body>
 
-<!-- PARTICLES -->
-<div class="particles">
-    <span style="left:10%; animation-delay:0s;"></span>
-    <span style="left:30%; animation-delay:5s;"></span>
-    <span style="left:50%; animation-delay:10s;"></span>
-    <span style="left:70%; animation-delay:3s;"></span>
-    <span style="left:90%; animation-delay:7s;"></span>
-</div>
-
-<!-- HERO -->
 <div class="hero">
     <div class="orb"></div>
     <h1>Gowri Studio</h1>
-    <p>Simple, well-crafted apps that solve everyday problems.</p>
+    <p>Simple apps that help you feel better, focus better, and live calmer.</p>
 </div>
 
 <div class="container">
@@ -175,34 +149,43 @@ body {
     <div class="section">
         <h2>Apps</h2>
 
-        <!-- ENTIRE CARD CLICKABLE -->
-        <a class="app-card" href="PrivacyPolicies/SimplyBreathe/privacy.html">
-            <div class="app-title">Simplybreath</div>
-            <div class="app-desc">
-                Minimal breathing guidance for relaxation, focus, and sleep.
+        <a class="card" href="PrivacyPolicies/SimplyBreathe/privacy.html">
+
+            <div class="title">Simplybreath</div>
+            <div class="desc">
+                A simple way to calm your mind in just a few minutes.
+            </div>
+
+            <div class="benefits">
+                <p>• Relax when you feel stressed</p>
+                <p>• Stay focused without distractions</p>
+                <p>• Fall asleep more easily at night</p>
+                <p>• No ads, no noise — just breathing</p>
             </div>
 
             <div class="tags">
-                <span class="tag">Relax 4-4-6</span>
-                <span class="tag">Focus 4-4-4</span>
-                <span class="tag">Sleep 4-8</span>
+                <span class="tag">Relax</span>
+                <span class="tag">Focus</span>
+                <span class="tag">Sleep</span>
             </div>
 
-            <p style="margin-top:16px; color: var(--accent);">
+            <p style="margin-top:18px; color: var(--accent);">
                 View Privacy Policy →
             </p>
+
         </a>
 
         <p style="margin-top:18px; color: var(--muted);">
-            More apps coming soon.
+            More simple tools coming soon.
         </p>
     </div>
 
     <div class="section">
-        <h2>Philosophy</h2>
-        <p style="max-width:620px; color: var(--muted);">
-            Most apps are overbuilt. We focus on simplicity, clarity, and usefulness —
-            removing everything that doesn’t matter.
+        <h2>Why we build</h2>
+        <p style="max-width:600px; color: var(--muted);">
+            Most apps try to do too much. We do the opposite — 
+            we build simple tools that solve one problem well,
+            without distractions or clutter.
         </p>
     </div>
 
