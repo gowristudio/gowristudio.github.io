@@ -26,18 +26,18 @@ body {
     overflow-x: hidden;
 }
 
-/* FLOATING PARTICLES */
+/* PARTICLES (FIXED CLICK ISSUE) */
 .particles {
     position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
     z-index: 0;
+    pointer-events: none; /* IMPORTANT FIX */
 }
 
 .particles span {
     position: absolute;
-    display: block;
     width: 6px;
     height: 6px;
     background: rgba(167,139,250,0.2);
@@ -46,18 +46,14 @@ body {
 }
 
 @keyframes float {
-    from {
-        transform: translateY(100vh) scale(0.5);
-    }
-    to {
-        transform: translateY(-10vh) scale(1);
-    }
+    from { transform: translateY(100vh) scale(0.5); }
+    to { transform: translateY(-10vh) scale(1); }
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 100px 20px 60px;
+    padding: 100px 20px 70px;
     position: relative;
     z-index: 1;
 }
@@ -74,19 +70,21 @@ body {
 }
 
 @keyframes breathe {
-    0%   { transform: scale(0.9); }
-    50%  { transform: scale(1.25); }
+    0% { transform: scale(0.9); }
+    50% { transform: scale(1.25); }
     100% { transform: scale(0.9); }
 }
 
-/* TEXT ANIMATION */
+/* HERO TEXT */
 .hero h1 {
     font-size: 44px;
+    font-weight: 600;
     animation: slideUp 1s ease forwards;
 }
 
 .hero p {
     margin-top: 16px;
+    font-size: 18px;
     color: var(--muted);
     animation: slideUp 1.4s ease forwards;
 }
@@ -107,13 +105,11 @@ body {
 
 /* SECTION */
 .section {
-    margin-top: 70px;
-    animation: fadeIn 1.2s ease;
+    margin-top: 80px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.section h2 {
+    margin-bottom: 24px; /* FIXED SPACING */
 }
 
 /* APP CARD */
@@ -122,6 +118,7 @@ body {
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
     padding: 28px;
+    margin-top: 10px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -141,7 +138,7 @@ body {
 }
 
 .app-card:hover {
-    transform: translateY(-6px) scale(1.01);
+    transform: translateY(-6px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
@@ -170,10 +167,15 @@ body {
     color: var(--accent);
 }
 
-/* LINKS */
+/* LINK */
 a {
     color: var(--accent);
     text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover {
+    opacity: 0.8;
 }
 
 /* FOOTER */
