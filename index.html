@@ -23,24 +23,77 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
     background: radial-gradient(circle at 50% -20%, #1a103d 0%, #09090f 60%);
     color: var(--text);
+    overflow-x: hidden;
+}
+
+/* FLOATING PARTICLES */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particles span {
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: rgba(167,139,250,0.2);
+    border-radius: 50%;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh) scale(0.5);
+    }
+    to {
+        transform: translateY(-10vh) scale(1);
+    }
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 100px 20px 80px;
+    padding: 100px 20px 60px;
+    position: relative;
+    z-index: 1;
 }
 
+/* BREATHING ORB */
+.orb {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #c084fc, #7c3aed);
+    animation: breathe 6s ease-in-out infinite;
+    box-shadow: 0 0 80px rgba(167,139,250,0.5);
+}
+
+@keyframes breathe {
+    0%   { transform: scale(0.9); }
+    50%  { transform: scale(1.25); }
+    100% { transform: scale(0.9); }
+}
+
+/* TEXT ANIMATION */
 .hero h1 {
     font-size: 44px;
-    font-weight: 600;
-    letter-spacing: -0.5px;
+    animation: slideUp 1s ease forwards;
 }
 
 .hero p {
     margin-top: 16px;
-    font-size: 18px;
     color: var(--muted);
+    animation: slideUp 1.4s ease forwards;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* CONTAINER */
@@ -48,16 +101,19 @@ body {
     max-width: 960px;
     margin: auto;
     padding: 0 20px 80px;
+    position: relative;
+    z-index: 1;
 }
 
 /* SECTION */
 .section {
     margin-top: 70px;
+    animation: fadeIn 1.2s ease;
 }
 
-.section h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* APP CARD */
@@ -66,17 +122,32 @@ body {
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
     padding: 28px;
-    transition: 0.25s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(167,139,250,0.15), transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.app-card:hover::before {
+    opacity: 1;
 }
 
 .app-card:hover {
-    border-color: rgba(167,139,250,0.5);
-    transform: translateY(-2px);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
+/* TEXT */
 .app-title {
     font-size: 20px;
-    font-weight: 500;
 }
 
 .app-desc {
@@ -105,12 +176,6 @@ a {
     text-decoration: none;
 }
 
-/* PHILOSOPHY */
-.philosophy {
-    max-width: 620px;
-    color: var(--muted);
-}
-
 /* FOOTER */
 .footer {
     margin-top: 100px;
@@ -123,7 +188,18 @@ a {
 
 <body>
 
+<!-- PARTICLES -->
+<div class="particles">
+    <span style="left:10%; animation-delay:0s;"></span>
+    <span style="left:30%; animation-delay:5s;"></span>
+    <span style="left:50%; animation-delay:10s;"></span>
+    <span style="left:70%; animation-delay:3s;"></span>
+    <span style="left:90%; animation-delay:7s;"></span>
+</div>
+
+<!-- HERO -->
 <div class="hero">
+    <div class="orb"></div>
     <h1>Gowri Studio</h1>
     <p>Simple, well-crafted apps that solve everyday problems.</p>
 </div>
@@ -159,9 +235,9 @@ a {
 
     <div class="section">
         <h2>Philosophy</h2>
-        <p class="philosophy">
-            Most apps are overbuilt. We take the opposite approach — 
-            remove friction, reduce noise, and focus on what truly matters.
+        <p style="max-width:620px; color: var(--muted);">
+            Most apps are overbuilt. We focus on simplicity, clarity, and usefulness —
+            removing everything that doesn’t matter.
         </p>
     </div>
 
