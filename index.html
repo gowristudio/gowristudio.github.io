@@ -26,14 +26,13 @@ body {
     overflow-x: hidden;
 }
 
-/* PARTICLES (FIXED CLICK ISSUE) */
+/* PARTICLES */
 .particles {
     position: fixed;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none; /* IMPORTANT FIX */
+    z-index: -1;
+    pointer-events: none;
 }
 
 .particles span {
@@ -54,11 +53,8 @@ body {
 .hero {
     text-align: center;
     padding: 100px 20px 70px;
-    position: relative;
-    z-index: 1;
 }
 
-/* BREATHING ORB */
 .orb {
     width: 140px;
     height: 140px;
@@ -75,23 +71,15 @@ body {
     100% { transform: scale(0.9); }
 }
 
-/* HERO TEXT */
 .hero h1 {
     font-size: 44px;
     font-weight: 600;
-    animation: slideUp 1s ease forwards;
 }
 
 .hero p {
     margin-top: 16px;
     font-size: 18px;
     color: var(--muted);
-    animation: slideUp 1.4s ease forwards;
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* CONTAINER */
@@ -99,8 +87,6 @@ body {
     max-width: 960px;
     margin: auto;
     padding: 0 20px 80px;
-    position: relative;
-    z-index: 1;
 }
 
 /* SECTION */
@@ -109,36 +95,25 @@ body {
 }
 
 .section h2 {
-    margin-bottom: 24px; /* FIXED SPACING */
+    margin-bottom: 24px;
 }
 
 /* APP CARD */
 .app-card {
+    display: block; /* makes whole card clickable */
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
     padding: 28px;
     margin-top: 10px;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.app-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent, rgba(167,139,250,0.15), transparent);
-    opacity: 0;
-    transition: 0.4s;
-}
-
-.app-card:hover::before {
-    opacity: 1;
+    text-decoration: none;
+    color: inherit;
 }
 
 .app-card:hover {
     transform: translateY(-6px);
+    border-color: rgba(167,139,250,0.5);
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
@@ -165,17 +140,6 @@ body {
     border-radius: 999px;
     background: rgba(167,139,250,0.12);
     color: var(--accent);
-}
-
-/* LINK */
-a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-a:hover {
-    opacity: 0.8;
 }
 
 /* FOOTER */
@@ -211,7 +175,8 @@ a:hover {
     <div class="section">
         <h2>Apps</h2>
 
-        <div class="app-card">
+        <!-- ENTIRE CARD CLICKABLE -->
+        <a class="app-card" href="PrivacyPolicies/SimplyBreathe/privacy.html">
             <div class="app-title">Simplybreath</div>
             <div class="app-desc">
                 Minimal breathing guidance for relaxation, focus, and sleep.
@@ -223,12 +188,10 @@ a:hover {
                 <span class="tag">Sleep 4-8</span>
             </div>
 
-            <p style="margin-top:16px;">
-                <a href="PrivacyPolicies/SimplyBreathe/privacy.html">
-                    Privacy Policy →
-                </a>
+            <p style="margin-top:16px; color: var(--accent);">
+                View Privacy Policy →
             </p>
-        </div>
+        </a>
 
         <p style="margin-top:18px; color: var(--muted);">
             More apps coming soon.
