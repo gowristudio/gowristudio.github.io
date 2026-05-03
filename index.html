@@ -75,20 +75,10 @@ body {
 
 /* CARD */
 .card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
     padding: 28px;
-    transition: 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(167,139,250,0.5);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
 /* TEXT */
@@ -126,6 +116,30 @@ body {
     color: var(--accent);
 }
 
+/* DONATION */
+.donation {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.donation p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+/* BUTTON */
+.button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
 /* FOOTER */
 .footer {
     margin-top: 100px;
@@ -149,7 +163,7 @@ body {
     <div class="section">
         <h2>Apps</h2>
 
-        <a class="card" href="PrivacyPolicies/SimplyBreathe/privacy.html">
+        <div class="card">
 
             <div class="title">Simplybreath</div>
             <div class="desc">
@@ -169,14 +183,32 @@ body {
                 <span class="tag">Sleep</span>
             </div>
 
-            <p style="margin-top:18px; color: var(--accent);">
-                View Privacy Policy →
-            </p>
+            <!-- PRIVACY BUTTON -->
+            <a class="button" href="PrivacyPolicies/SimplyBreathe/privacy.html">
+                View Privacy Policy
+            </a>
 
-        </a>
+            <!-- DONATION TEXT -->
+            <div class="donation">
+                <p><strong>This app is intentionally ad-free — to protect your calm.</strong></p>
+
+                <p>No ads. No tracking. No distractions.</p>
+
+                <p>If it’s helped you even a little, you can support keeping it this way.</p>
+
+                <p>Your contribution helps maintain this app and create more peaceful experiences.</p>
+
+                <p style="margin-top:12px;">☕ Keep Simplybreath ad-free</p>
+
+                <p style="margin-top:10px;">
+                    Donate via UPI (India): <strong>bgowri1970@okicici</strong>
+                </p>
+            </div>
+
+        </div>
 
         <p style="margin-top:18px; color: var(--muted);">
-            More useful tools coming soon.
+            More simple tools coming soon.
         </p>
     </div>
 
